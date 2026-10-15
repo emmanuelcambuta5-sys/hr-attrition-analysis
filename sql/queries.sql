@@ -21,4 +21,12 @@ SELECT
     sum(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END) AS saidas,
     round(100.0 * (sum(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END)) / (count(*)),2) AS taxa_pct
 FROM employees
-GROUP BY Department;
+GROUP BY Department ;
+
+-- Taxa de attrition por hora extra: total, saídas e taxa em % (esperado: No 10,44 | Yes 30,53)
+SELECT 
+    OverTime, count(*) AS total,
+    sum(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END) AS saidas,
+    round(100.0 * (sum(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END)) / (count(*)),2) AS taxa_pct
+FROM employees
+GROUP BY OverTime;
