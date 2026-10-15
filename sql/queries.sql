@@ -30,3 +30,8 @@ SELECT
     round(100.0 * (sum(CASE WHEN Attrition = 'Yes' THEN 1 ELSE 0 END)) / (count(*)),2) AS taxa_pct
 FROM employees
 GROUP BY OverTime;
+
+SELECT 
+    Attrition, round(avg(MonthlyIncome), 2) AS media_sal, round(avg(JobSatisfaction),2) AS satisfacao
+FROM employees
+GROUP BY Attrition;
