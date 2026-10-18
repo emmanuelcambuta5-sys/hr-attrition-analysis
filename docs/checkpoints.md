@@ -22,4 +22,21 @@
 - **Dificuldades encontradas:** dividi as saídas pelos funcionários que ficaram (1233) e obtive 19,22% em vez de 16,12%; somei as taxas dos departamentos e obtive 53,52%. Aprendi que a taxa sempre divide pelo total e que taxas não se somam.
 - **Aprendizado:** número bruto de saídas engana; para comparar departamentos é preciso usar a taxa, que considera o tamanho de cada um.
 - **Evidência:** `docs/prints/etapa3_dashboard.png`
-- **LinkedIn:** post da Etapa 3 pendente.
+- **LinkedIn:** post publicado.
+
+## Etapa 4: Consultas com SQL
+
+- **O que fiz:** criei um banco SQLite (`hr.db`) a partir do CSV com um script em Python e escrevi 7 consultas em `sql/queries.sql`: contagem de registros, funcionários e saídas por departamento, taxa de attrition por departamento e por hora extra, salário médio e satisfação por situação, e taxa por faixa salarial com JOIN na tabela `faixa_salarial`.
+
+- **Resultados (hora extra):** quem faz hora extra tem taxa de saída de 30,53%, contra 10,44% de quem não faz (quase 3 vezes maior).
+
+- **Resultados (salário):** quem saiu ganhava em média 4.787,09 por mês, contra 6.832,74 de quem ficou (cerca de 30% a menos). A satisfação média também foi menor: 2,47 contra 2,78.
+
+- **Resultados (faixa salarial):** a taxa de saída da faixa Baixa (até 3.000) é de 28,61%, contra 10,50% na faixa Alta, cerca de 2,7 vezes maior. A maior queda está entre Baixa e Media (28,61% para 12,10%).
+
+- **Dificuldades encontradas:** até aqui eu só usava SQL para consultar. Ao criar a tabela `faixa_salarial`, o `CREATE TABLE` deu erro "table already exists" e o `INSERT` rodou 8 vezes, duplicando a faixa Baixa. Resolvi esvaziando a tabela e movendo a criação para um arquivo separado (`sql/01_criar_faixa_salarial.sql`), com `DROP TABLE IF EXISTS`, que pode ser rodado várias vezes sem duplicar linhas.
+
+- **Aprendizado:** o JOIN ligou duas tabelas por um intervalo (`BETWEEN`), e não por um id, e assim criou os grupos Baixa, Media e Alta que não existiam em `employees`. O GROUP BY, sozinho, só reúne valores que já existem. Aprendi também que arquivos que modificam o banco (CREATE, INSERT) devem ficar separados das consultas e poder rodar várias vezes sem duplicar dados.
+
+- **Evidência:** `docs/prints/etapa4_sql.png`
+- **LinkedIn:** post publicado.
