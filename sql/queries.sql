@@ -31,7 +31,21 @@ SELECT
 FROM employees
 GROUP BY OverTime;
 
+-- Salário médio e satisfação por situação (Attrition): quem ficou vs. quem saiu (esperado: No 6832,74 e 2,78 | Yes 4787,09 e 2,47)
 SELECT 
     Attrition, round(avg(MonthlyIncome), 2) AS media_sal, round(avg(JobSatisfaction),2) AS satisfacao
 FROM employees
 GROUP BY Attrition;
+
+-- Taxa de attrition por faixa salarial, com JOIN em faixa_salarial (esperado: Baixa 28,61 | Media 12,10 | Alta 10,50)
+-- Requer a tabela faixa_salarial: rode antes o sql/01_criar_faixa_salarial.sql
+]SELECT
+    f.rotulo,
+    count(*) AS total,
+    sum(CASE WHEN e.Attrition = 'Yes' THEN 1 ELSE 0 END) AS saidas,
+    round(100.0 * sum(CASE WHEN e.Attrition = 'Yes' THEN 1 ELSE 0 END) / count(*), 2) AS taxa_pct
+FROM employees e
+JOIN faixa_salarial f
+    ON e.MonthlyIncome BETWEEN f.faixa_min AND f.faixa_max
+GROUP BY f.rotulo
+ORDER BY taxa_pct DESC;
