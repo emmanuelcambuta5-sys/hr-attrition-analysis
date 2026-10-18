@@ -39,7 +39,7 @@ GROUP BY Attrition;
 
 -- Taxa de attrition por faixa salarial, com JOIN em faixa_salarial (esperado: Baixa 28,61 | Media 12,10 | Alta 10,50)
 -- Requer a tabela faixa_salarial: rode antes o sql/01_criar_faixa_salarial.sql
-]SELECT
+SELECT
     f.rotulo,
     count(*) AS total,
     sum(CASE WHEN e.Attrition = 'Yes' THEN 1 ELSE 0 END) AS saidas,
