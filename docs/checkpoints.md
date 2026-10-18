@@ -9,7 +9,7 @@
 
 ## Etapa 2: Versionamento com GitHub
 - **Repositório:** https://github.com/emmanuelcambuta5-sys/hr-attrition-analysis
-- **Commits até agora:** 6 (último: `feat: dashboard excel com kpis e grafico de attrition`)
+- **Commits até agora:** 13 (último: `docs: atualiza checkpoints com a etapa 4`)
 - **Dificuldades encontradas:** um arquivo salvo com extensão errada (`.paint` em vez de `.png`) e um arquivo temporário do Excel (`~$analise_attrition.xlsx`) entraram em commits. Corrigi com um commit de correção e com `git commit --amend`, e adicionei `~$*` ao `.gitignore`.
 
 ## Etapa 3: Análise de Negócio no Excel
