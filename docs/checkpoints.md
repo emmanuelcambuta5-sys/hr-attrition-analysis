@@ -58,4 +58,4 @@
 - **Aprendizado:** a coluna `AttritionFlag` (1 para quem saiu, 0 para quem ficou) faz a média ser a própria taxa de saída: a soma conta as saídas (237) e a divisão pelo total (1470) dá a fração de quem saiu (16,12%). O `pd.cut` transformou números soltos (idade e distância de casa) em faixas com nome, o mesmo papel da tabela `faixa_salarial` com JOIN no SQL, só que numa linha de código.
 
 - **Evidência:** `docs/prints/etapa5_eda_hora_extra.png`
-- **LinkedIn:** post da Etapa 5 pendente.
+- **LinkedIn:** post publicado.
