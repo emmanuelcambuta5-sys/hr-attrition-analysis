@@ -40,3 +40,22 @@
 
 - **Evidência:** `docs/prints/etapa4_sql.png`
 - **LinkedIn:** post publicado.
+
+## Etapa 5: Limpeza e Análise em Python
+
+- **O que fiz:** criei dois notebooks. O `01_limpeza.ipynb` removeu 3 colunas sem variação (EmployeeCount, Over18 e StandardHours), criou as colunas AttritionFlag e FaixaEtaria e gravou o dataset limpo em `data/processed/employees_clean.csv` (1470 linhas, 34 colunas, sem nulos). O `02_eda.ipynb` lê esse arquivo e responde, com cálculos, gráficos e texto, às perguntas de hora extra, cargo, distância de casa, salário e satisfação.
+
+- **Resultados (hora extra):** quem faz hora extra tem taxa de saída de 30,53%, contra 10,44% de quem não faz (quase 3 vezes maior).
+
+- **Resultados (cargo):** a maior taxa de saída é a de Sales Representative, com 39,76% (33 de 83 funcionários), seguida de Laboratory Technician (23,94%) e Human Resources (23,08%). A menor é a de Research Director (2,50%). A base de Sales Representative é menor que a de outros cargos.
+
+- **Resultados (distância de casa):** quem mora na faixa mais distante (16-29) tem taxa de saída de 20,67%, contra 13,77% de quem mora na faixa 1-5, cerca de 1,5 vez maior. A taxa sobe junto com a distância (13,77%, 16,11% e 20,67%), mas é um efeito mais fraco que o da hora extra.
+
+- **Resultados (salário e satisfação):** quem saiu ganhava em média 4.787,09 por mês, contra 6.832,74 de quem ficou (cerca de 30% a menos). A satisfação média também foi menor: 2,47 contra 2,78, mas a diferença é pequena numa escala de 1 a 4.
+
+- **Dificuldades encontradas:** o primeiro commit do `02_eda.ipynb` saiu com 0 insertions, porque o notebook tinha mudanças não salvas (a bolinha branca na aba) quando rodei `git add .`. O Git só enxerga o que está gravado no disco. Resolvi salvando com Ctrl + S e fazendo um novo commit, e passei a conferir se o arquivo está salvo e a linha de "insertions" antes de enviar.
+
+- **Aprendizado:** a coluna `AttritionFlag` (1 para quem saiu, 0 para quem ficou) faz a média ser a própria taxa de saída: a soma conta as saídas (237) e a divisão pelo total (1470) dá a fração de quem saiu (16,12%). O `pd.cut` transformou números soltos (idade e distância de casa) em faixas com nome, o mesmo papel da tabela `faixa_salarial` com JOIN no SQL, só que numa linha de código.
+
+- **Evidência:** `docs/prints/etapa5_eda_hora_extra.png`
+- **LinkedIn:** post da Etapa 5 pendente.
