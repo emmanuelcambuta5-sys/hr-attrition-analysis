@@ -59,3 +59,5 @@
 
 - **Evidência:** `docs/prints/etapa5_eda_hora_extra.png`
 - **LinkedIn:** post publicado.
+
+- [x] Dashboard em Power BI (medidas DAX, filtros e visuais)
